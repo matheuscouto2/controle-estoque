@@ -36,9 +36,9 @@ async function carregarMovimentacoes() {
             ${m.tipo}
           </span>
         </td>
+        <td style="width: 10%;">${formatarData(m.data)}</td>
         <td>${m.produtoNome}</td>
         <td>${m.quantidade}</td>
-        <td>${m.data}</td>
       `;
       tbody.appendChild(tr);
     });
@@ -85,4 +85,11 @@ async function salvarMovimentacao(e) {
   } catch (err) {
     console.error('Erro ao salvar movimentação', err);
   }
+}
+
+function formatarData(dataISO) {
+    if (!dataISO) return "";
+
+    const data = new Date(dataISO);
+    return data.toLocaleDateString("pt-BR");
 }
