@@ -1,0 +1,482 @@
+/* =========================
+   RESET LEVE + BASE
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f4f6f9;
+  color: #2c3e50;
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  display: none;
+}
+
+.navbar .navbar-brand,
+.navbar button {
+  color: #fff !important;
+  font-weight: 500;
+}
+
+.navbar button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+  max-width: 100%;
+  margin-right: 0px;
+  margin-left: 0px;
+  padding: 50px;
+  padding-left: 80px
+}
+
+/* =========================
+   CARDS
+========================= */
+.card {
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.card h4,
+.card h5 {
+  font-weight: 600;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+.btn {
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  border: none;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-info {
+  color: #fff;
+}
+
+.btn-sm {
+  padding: 4px 10px;
+}
+
+/* =========================
+   TABELAS
+========================= */
+.table {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.table thead {
+  background: #eef2ff;
+}
+
+.table th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #4f46e5;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+/* Hover suave */
+.table tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* =========================
+   ALERTA DE ESTOQUE BAIXO
+========================= */
+.table-danger {
+  background-color: #fee2e2 !important;
+}
+
+.badge-minimo {
+  background: #dc2626;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+}
+
+/* =========================
+   MODAIS
+========================= */
+.modal-content {
+  border-radius: 16px;
+  border: none;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+/* =========================
+   INPUTS
+========================= */
+.form-control,
+.form-select {
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
+}
+
+/* =========================
+   LOGIN
+========================= */
+body.login {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+}
+
+body.login .card {
+  animation: fadeUp 0.6s ease;
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   UTILITÁRIOS
+========================= */
+.text-muted-small {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* =========================
+   SIDEBAR – DIFERENTONA
+========================= */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 260px;
+  background: linear-gradient(180deg, #4f46e5, #4338ca);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+
+  /* Curva orgânica */
+  border-top-right-radius: 120px;
+  border-bottom-right-radius: 120px;
+
+  box-shadow: 8px 0 30px rgba(79, 70, 229, 0.35);
+}
+
+/* Logo */
+.sidebar .logo {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 20px 0 40px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Links */
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #e0e7ff;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 999px; /* pill */
+  margin-bottom: 10px;
+
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.sidebar a:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* Item ativo */
+.sidebar a.active {
+  background: #fff;
+  color: #4f46e5;
+  font-weight: 700;
+
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.35);
+}
+
+/* Ícone do ativo (se tiver) */
+.sidebar a.active i {
+  color: white;
+}
+
+/* Footer */
+.sidebar-footer {
+  margin-top: auto;
+  padding-bottom: 25px;
+  max-width: fit-content;
+}
+
+/* Botão sair */
+/* =========================
+   BOTÃO SAIR – AJUSTADO
+========================= */
+.sidebar-footer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+
+  border-radius: 10px;
+  margin: 0 12px 10px;
+
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+
+  transition: all 0.2s ease;
+}
+
+.sidebar-footer a:hover {
+  background: rgba(239, 68, 68, 0.9);
+  color: #fff;
+  transform: none;
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+.main-content {
+  margin-left: 230px;
+}
+
+.sidebar a.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* =========================
+   BOTÕES DE AÇÃO (TABELAS)
+========================= */
+.table .btn-info,
+.table .btn-danger {
+  --bs-btn-padding-y: 4px;
+  --bs-btn-padding-x: 8px;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+/* Ícones (se usar) */
+.table .btn i {
+  font-size: 0.85rem;
+}
+
+/* Hover mais suave */
+.table .btn-info:hover,
+.table .btn-danger:hover {
+  filter: brightness(0.95);
+}
+
+/* Active sem afundar demais */
+.table .btn-info:active,
+.table .btn-danger:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   BOTÕES DE AÇÃO – SOFT
+========================= */
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-color-type: var(--bs-table-striped-color);
+  --bs-table-bg-type: #4a40d917;
+}
+
+.table .btn-info {
+  color: #4a40d9 !important;
+
+  --bs-btn-bg: #4a40d917;
+  --bs-btn-border-color: #4a40d9;
+
+  --bs-btn-hover-bg: #4a40d9;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-border-color: #4a40d9;
+}
+
+.table .btn-danger {
+  --bs-btn-bg: rgba(220, 53, 69, 0.15);
+  --bs-btn-color: #dc3545;
+  --bs-btn-border-color: rgba(220, 53, 69, 0.3);
+
+
+  --bs-btn-hover-bg: rgba(220, 53, 69, 0.25);
+  --bs-btn-hover-color: #dc3545;
+  --bs-btn-hover-border-color: rgba(220, 53, 69, 0.45);
+}
+
+/* =========================
+   BOTÕES DE AÇÃO – SUAVES
+========================= */
+.btn-edit,
+.btn-delete {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 8px;
+  box-shadow: none;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.15s ease;
+}
+
+/* EDITAR */
+.btn-edit {
+  background: rgba(74, 64, 217, 0.15);
+  color: #4a40d9;
+  border: 1px solid #4a40d9;
+}
+
+.btn-edit:hover {
+  background: #4a40d9;
+  color: #fff;
+  transform: scale(0.96);
+}
+
+/* EXCLUIR */
+.btn-delete {
+  background: rgba(220, 53, 69, 0.15);
+  color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+.btn-delete:hover {
+  background: #dc3545;
+  color: #fff;
+  transform: scale(0.96);
+}
+
+/* =========================
+   BADGES – MODERNOS
+========================= */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  border-radius: 999px; /* pill */
+  letter-spacing: 0.3px;
+
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+/* SUCCESS */
+.badge.bg-success {
+  background: rgba(34, 197, 94, 0.15) !important;
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+/* DANGER */
+.badge.bg-danger {
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+/* Hover (opcional) */
+.badge:hover {
+  transform: scale(0.96);
+}
+
+/* =========================
+   TABLE HEADER – PREMIUM
+========================= */
+.table thead th {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+
+  color: #4a40d9;
+  background: rgba(74, 64, 217, 0.06);
+
+  padding: 12px 10px;
+  border-bottom: 2px solid rgba(74, 64, 217, 0.35);
+}
+
+.table td {
+  height: 50px;
+}
+
+/* remove sombra pesada do bootstrap */
+.table > :not(caption) > * > * {
+  box-shadow: none;
+}
+
+.btn-primary {
+  min-width: 120px;
+  height: 35px;
+}

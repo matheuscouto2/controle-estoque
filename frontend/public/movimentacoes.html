@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Movimentações</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="logo">InvenTech</div>
+  <a href="index.html"><i class="fa fa-chart-line" style="margin-right: 10px;"></i> Dashboard</a>
+  <a href="categorias.html"><i class="fa fa-box" style="margin-right: 10px;"></i>Categorias</a>
+  <a href="fornecedores.html"><i class="fa fa-truck" style="margin-right: 10px;"></i>Fornecedores</a>
+  <a href="produtos.html"><i class="fa fa-list" style="margin-right: 10px;"></i>Produtos</a>
+  <a href="movimentacoes.html" class="active"><i class="fa fa-exchange" style="margin-right: 10px;"></i>Movimentações</a>
+
+  <div class="sidebar-footer">
+    <button onclick="logout()" class="btn btn-sm btn-light w-100">Sair</button>
+  </div>
+</div>
+
+<div class="main-content">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+      <div class="container-fluid">
+        <span class="navbar-brand">Movimentações</span>
+      </div>
+    </nav>
+
+  <div class="container">
+
+    <div class="d-flex justify-content-between mb-3">
+      <h2>Movimentações</h2>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMovimentacao">
+        + NOVO
+      </button>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Produto</th>
+          <th>Quantidade</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody id="tblMovimentacoes"></tbody>
+    </table>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalMovimentacao" tabindex="-1">
+    <div class="modal-dialog">
+      <form id="formMovimentacao" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Movimentação</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <label class="form-label">Produto</label>
+          <select id="produtoMov" class="form-select mb-2" required></select>
+
+          <label class="form-label">Tipo</label>
+          <select id="tipoMov" class="form-select mb-2">
+            <option value="ENTRADA">Entrada</option>
+            <option value="SAIDA">Saída</option>
+          </select>
+
+          <label class="form-label">Quantidade</label>
+          <input type="number" id="qtdMov" class="form-control mb-2" required>
+
+          <label class="form-label">Data</label>
+          <input type="date" id="dataMov" class="form-control" required>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit">Salvar</button>
+          <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/movimentacoes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
