@@ -1,5 +1,4 @@
-// auth.js
-const apiBase = 'http://localhost:8080'; // ex: 'https://api.seusite.com' ou vazio se mesmo domínio
+const apiBase = 'http://localhost:8080'; 
 const loginForm = document.getElementById('login-form');
 const errorDiv = document.getElementById('login-error');
 
@@ -17,12 +16,11 @@ loginForm.addEventListener('submit', async (e) => {
 
     if (!res.ok) throw new Error('Login inválido');
     const data = await res.json();
-    // supondo que retorna token; ajuste conforme sua API
     const token = data.token || data.accessToken || null;
     if (!token) throw new Error('Resposta sem token');
 
     localStorage.setItem('authToken', token);
-    window.location.href = 'categorias.html'; // ou outra página inicial
+    window.location.href = 'categorias.html';
   } catch (err) {
     console.error(err);
     errorDiv.textContent = 'Usuário ou senha inválidos';
@@ -30,7 +28,6 @@ loginForm.addEventListener('submit', async (e) => {
   }
 });
 
-// Função de logout simples
 function logout() {
   localStorage.removeItem('authToken');
   window.location.href = 'login.html';

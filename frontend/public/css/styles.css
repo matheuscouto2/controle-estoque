@@ -1,6 +1,3 @@
-/* =========================
-   RESET LEVE + BASE
-========================= */
 * {
   box-sizing: border-box;
 }
@@ -11,9 +8,6 @@ body {
   font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* =========================
-   NAVBAR
-========================= */
 .navbar {
   background: linear-gradient(135deg, #4f46e5, #6366f1);
   display: none;
@@ -29,20 +23,14 @@ body {
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* =========================
-   CONTAINER
-========================= */
 .container {
   max-width: 100%;
   margin-right: 0px;
   margin-left: 0px;
   padding: 50px;
-  padding-left: 80px
+  padding-left: 80px;
 }
 
-/* =========================
-   CARDS
-========================= */
 .card {
   border: none;
   border-radius: 14px;
@@ -54,9 +42,6 @@ body {
   font-weight: 600;
 }
 
-/* =========================
-   BOTÕES
-========================= */
 .btn {
   border-radius: 10px;
   font-weight: 500;
@@ -79,9 +64,6 @@ body {
   padding: 4px 10px;
 }
 
-/* =========================
-   TABELAS
-========================= */
 .table {
   background: #fff;
   border-radius: 14px;
@@ -103,14 +85,10 @@ body {
   vertical-align: middle;
 }
 
-/* Hover suave */
 .table tbody tr:hover {
   background: #f8fafc;
 }
 
-/* =========================
-   ALERTA DE ESTOQUE BAIXO
-========================= */
 .table-danger {
   background-color: #fee2e2 !important;
 }
@@ -123,9 +101,6 @@ body {
   font-size: 0.7rem;
 }
 
-/* =========================
-   MODAIS
-========================= */
 .modal-content {
   border-radius: 16px;
   border: none;
@@ -143,9 +118,6 @@ body {
   border-top: none;
 }
 
-/* =========================
-   INPUTS
-========================= */
 .form-control,
 .form-select {
   border-radius: 10px;
@@ -158,9 +130,6 @@ body {
   box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
 }
 
-/* =========================
-   LOGIN
-========================= */
 body.login {
   background: linear-gradient(135deg, #4f46e5, #6366f1);
 }
@@ -169,9 +138,6 @@ body.login .card {
   animation: fadeUp 0.6s ease;
 }
 
-/* =========================
-   ANIMAÇÕES
-========================= */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -183,17 +149,11 @@ body.login .card {
   }
 }
 
-/* =========================
-   UTILITÁRIOS
-========================= */
 .text-muted-small {
   font-size: 0.85rem;
   color: #6b7280;
 }
 
-/* =========================
-   SIDEBAR – DIFERENTONA
-========================= */
 .sidebar {
   position: fixed;
   top: 0;
@@ -206,14 +166,12 @@ body.login .card {
   flex-direction: column;
   z-index: 1000;
 
-  /* Curva orgânica */
   border-top-right-radius: 120px;
   border-bottom-right-radius: 120px;
 
   box-shadow: 8px 0 30px rgba(79, 70, 229, 0.35);
 }
 
-/* Logo */
 .sidebar .logo {
   color: #fff;
   font-size: 1.6rem;
@@ -223,7 +181,6 @@ body.login .card {
   letter-spacing: 0.5px;
 }
 
-/* Links */
 .sidebar a {
   display: flex;
   align-items: center;
@@ -239,14 +196,12 @@ body.login .card {
   transition: all 0.25s ease;
 }
 
-/* Hover */
 .sidebar a:hover {
   background: rgba(255, 255, 255, 0.18);
   color: #fff;
   transform: translateX(4px);
 }
 
-/* Item ativo */
 .sidebar a.active {
   background: #fff;
   color: #4f46e5;
@@ -255,22 +210,16 @@ body.login .card {
   box-shadow: 0 8px 20px rgba(255, 255, 255, 0.35);
 }
 
-/* Ícone do ativo (se tiver) */
 .sidebar a.active i {
   color: white;
 }
 
-/* Footer */
 .sidebar-footer {
   margin-top: auto;
   padding-bottom: 25px;
   max-width: fit-content;
 }
 
-/* Botão sair */
-/* =========================
-   BOTÃO SAIR – AJUSTADO
-========================= */
 .sidebar-footer a {
   display: flex;
   align-items: center;
@@ -295,9 +244,6 @@ body.login .card {
   transform: none;
 }
 
-/* =========================
-   CONTEÚDO
-========================= */
 .main-content {
   margin-left: 230px;
 }
@@ -308,9 +254,6 @@ body.login .card {
   font-weight: 600;
 }
 
-/* =========================
-   BOTÕES DE AÇÃO (TABELAS)
-========================= */
 .table .btn-info,
 .table .btn-danger {
   --bs-btn-padding-y: 4px;
@@ -323,26 +266,20 @@ body.login .card {
   box-shadow: none;
 }
 
-/* Ícones (se usar) */
 .table .btn i {
   font-size: 0.85rem;
 }
 
-/* Hover mais suave */
 .table .btn-info:hover,
 .table .btn-danger:hover {
   filter: brightness(0.95);
 }
 
-/* Active sem afundar demais */
 .table .btn-info:active,
 .table .btn-danger:active {
   transform: scale(0.97);
 }
 
-/* =========================
-   BOTÕES DE AÇÃO – SOFT
-========================= */
 .table-striped > tbody > tr:nth-of-type(odd) > * {
   --bs-table-color-type: var(--bs-table-striped-color);
   --bs-table-bg-type: #4a40d917;
@@ -364,15 +301,11 @@ body.login .card {
   --bs-btn-color: #dc3545;
   --bs-btn-border-color: rgba(220, 53, 69, 0.3);
 
-
   --bs-btn-hover-bg: rgba(220, 53, 69, 0.25);
   --bs-btn-hover-color: #dc3545;
   --bs-btn-hover-border-color: rgba(220, 53, 69, 0.45);
 }
 
-/* =========================
-   BOTÕES DE AÇÃO – SUAVES
-========================= */
 .btn-edit,
 .btn-delete {
   padding: 4px 8px;
@@ -387,7 +320,6 @@ body.login .card {
     transform 0.15s ease;
 }
 
-/* EDITAR */
 .btn-edit {
   background: rgba(74, 64, 217, 0.15);
   color: #4a40d9;
@@ -400,7 +332,6 @@ body.login .card {
   transform: scale(0.96);
 }
 
-/* EXCLUIR */
 .btn-delete {
   background: rgba(220, 53, 69, 0.15);
   color: #dc3545;
@@ -413,9 +344,6 @@ body.login .card {
   transform: scale(0.96);
 }
 
-/* =========================
-   BADGES – MODERNOS
-========================= */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -425,35 +353,29 @@ body.login .card {
   font-size: 0.8rem;
   font-weight: 600;
 
-  border-radius: 999px; /* pill */
+  border-radius: 999px;
   letter-spacing: 0.3px;
 
   transition: all 0.2s ease;
   min-width: 120px;
 }
 
-/* SUCCESS */
 .badge.bg-success {
   background: rgba(34, 197, 94, 0.15) !important;
   color: #22c55e;
   border: 1px solid rgba(34, 197, 94, 0.4);
 }
 
-/* DANGER */
 .badge.bg-danger {
   background: rgba(239, 68, 68, 0.15) !important;
   color: #ef4444;
   border: 1px solid rgba(239, 68, 68, 0.4);
 }
 
-/* Hover (opcional) */
 .badge:hover {
   transform: scale(0.96);
 }
 
-/* =========================
-   TABLE HEADER – PREMIUM
-========================= */
 .table thead th {
   font-size: 0.8rem;
   font-weight: 700;
@@ -471,7 +393,6 @@ body.login .card {
   height: 50px;
 }
 
-/* remove sombra pesada do bootstrap */
 .table > :not(caption) > * > * {
   box-shadow: none;
 }
@@ -482,11 +403,47 @@ body.login .card {
 }
 
 .table > tbody > tr:last-child > td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .table th:nth-child(4),
 .table td:nth-child(4) {
-    text-align: center;
-    vertical-align: middle;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.dashboard-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-cards .card {
+  flex: 1 1 200px;
+  padding: 20px;
+  background-color: rgba(74, 64, 217, 0.06);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(74, 64, 217, 0.35);
+  border: 1px solid #4f46e5;
+  color: #4f46e5;
+}
+
+.dashboard-graficos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.grafico-box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 300px;
 }

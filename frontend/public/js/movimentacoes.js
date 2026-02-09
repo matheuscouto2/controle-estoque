@@ -1,4 +1,3 @@
-// movimentacoes.js
 document.addEventListener('DOMContentLoaded', () => {
   carregarMovimentacoes();
   carregarProdutos();

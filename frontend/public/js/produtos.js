@@ -1,4 +1,3 @@
-// produtos.js
 document.addEventListener('DOMContentLoaded', () => {
   carregarProdutos();
   carregarCombos();
