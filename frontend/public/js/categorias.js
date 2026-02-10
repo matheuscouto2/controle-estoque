@@ -12,12 +12,12 @@ async function carregarCategorias() {
     data.forEach((cat) => {
       const tr = document.createElement("tr");
       tr.innerHTML = `
-        <td style="width: 10%;">
-          <button class="btn-edit" onclick="editarCategoria(${cat.id}, '${cat.nome.replace(/'/g, "\\'")}')">Editar</button>
-          <button class="btn-delete" onclick="excluirCategoria(${cat.id})">Excluir</button>
-        </td>
         <td style="display: none;">${cat.id}</td>
         <td>${cat.nome}</td>
+        <td style="width: 15%;">
+          <button class="btn-edit" onclick="editarCategoria(${cat.id}, '${cat.nome.replace(/'/g, "\\'")}')"><i class="fa fa-edit" style="margin-right: 5px;"></i>Editar</button>
+          <button class="btn-delete" onclick="excluirCategoria(${cat.id})"><i class="fa fa-trash" style="margin-right: 5px;"></i>Excluir</button>
+        </td>
       `;
       tbody.appendChild(tr);
     });

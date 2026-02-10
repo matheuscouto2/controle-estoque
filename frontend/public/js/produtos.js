@@ -30,18 +30,18 @@ async function carregarProdutos() {
     }
 
     tr.innerHTML = `
-      <td style="width: 10%;">
-        <button class="btn-edit"
-          onclick="editarProduto(${p.id})">Editar</button>
-        <button class="btn-delete"
-          onclick="excluirProduto(${p.id})">Excluir</button>
-      </td>
       <td>${p.nome}</td>
       <td>${p.categoriaNome}</td>
       <td>${p.fornecedorNome}</td>
-      <td>${p.quantidade}</td>
-      <td>${p.minima}</td>
-      <td>R$ ${p.valor.toFixed(2)}</td>
+      <td class="col-center">${p.quantidade}</td>
+      <td class="col-center">${p.minima}</td>
+      <td class="col-center">${formatarMoeda(p.valor)}</td>
+      <td style="width: 15%;">
+        <button class="btn-edit"
+          onclick="editarProduto(${p.id})"><i class="fa fa-edit" style="margin-right: 5px;"></i>Editar</button>
+        <button class="btn-delete"
+          onclick="excluirProduto(${p.id})"><i class="fa fa-trash" style="margin-right: 5px;"></i>Excluir</button>
+      </td>
     `;
     tbody.appendChild(tr);
   });
@@ -90,4 +90,11 @@ async function excluirProduto(id) {
     await request(`/produtos/${id}`, { method: 'DELETE' });
     carregarProdutos();
   }
+}
+
+function formatarMoeda(valor) {
+    return Number(valor).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
 }

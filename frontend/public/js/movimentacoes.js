@@ -30,14 +30,14 @@ async function carregarMovimentacoes() {
     data.forEach(m => {
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td style="width: 10%;">
+        <td style="width: 15%;">
           <span class="badge ${m.tipo === 'ENTRADA' ? 'bg-success' : 'bg-danger'}">
             ${m.tipo}
           </span>
         </td>
         <td style="width: 10%;">${formatarData(m.data)}</td>
         <td>${m.produtoNome}</td>
-        <td>${m.quantidade}</td>
+        <td class="col-center">${m.quantidade}</td>
       `;
       tbody.appendChild(tr);
     });

@@ -13,19 +13,19 @@ async function carregarFornecedores() {
     data.forEach((f) => {
       const tr = document.createElement("tr");
       tr.innerHTML = `
-        <td style="width: 10%;">
-          <button class="btn-edit"
-            onclick="editarFornecedor(${f.id}, '${f.nome.replace(/'/g, "\\'")}', '${(f.telefone || "").replace(/'/g, "\\'")}')">
-            Editar
-          </button>
-          <button class="btn-delete"
-            onclick="excluirFornecedor(${f.id})">
-            Excluir
-          </button>
-        </td>
         <td style="display: none;">${f.id}</td>
         <td>${f.nome}</td>
         <td>${f.telefone || "-"}</td>
+        <td style="width: 15%;">
+          <button class="btn-edit"
+            onclick="editarFornecedor(${f.id}, '${f.nome.replace(/'/g, "\\'")}', '${(f.telefone || "").replace(/'/g, "\\'")}')">
+            <i class="fa fa-edit" style="margin-right: 5px;"></i>Editar
+          </button>
+          <button class="btn-delete"
+            onclick="excluirFornecedor(${f.id})">
+            <i class="fa fa-trash" style="margin-right: 5px;"></i>Excluir
+          </button>
+        </td>
       `;
       tbody.appendChild(tr);
     });

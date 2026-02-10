@@ -72,6 +72,7 @@ body {
 
 .table thead {
   background: #eef2ff;
+  height: 50px;
 }
 
 .table th {
@@ -324,6 +325,7 @@ body.login .card {
   background: rgba(74, 64, 217, 0.15);
   color: #4a40d9;
   border: 1px solid #4a40d9;
+  margin-right: 5px;
 }
 
 .btn-edit:hover {
@@ -406,12 +408,6 @@ body.login .card {
   border-bottom: none;
 }
 
-.table th:nth-child(4),
-.table td:nth-child(4) {
-  text-align: center;
-  vertical-align: middle;
-}
-
 .dashboard-cards {
   display: flex;
   flex-wrap: wrap;
@@ -446,4 +442,9 @@ body.login .card {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   flex: 1;
   min-width: 300px;
+}
+
+.col-center {
+  text-align: center;
+  vertical-align: middle;
 }
