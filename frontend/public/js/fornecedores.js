@@ -4,19 +4,56 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", salvarFornecedor);
 });
 
-async function carregarFornecedores() {
-  try {
-    const data = await request("/fornecedores", { method: "GET" });
-    const tbody = document.querySelector("#tblFornecedores tbody");
-    tbody.innerHTML = "";
+function criarPaginacao(data, pageSize = 10) {
+  return {
+    data,
+    pageSize,
+    page: 1,
+    totalPages: Math.ceil(data.length / pageSize)
+  };
+}
 
-    data.forEach((f) => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
+function getPagina(paginacao) {
+  const start = (paginacao.page - 1) * paginacao.pageSize;
+  return paginacao.data.slice(start, start + paginacao.pageSize);
+}
+
+function renderPaginacao(paginacao, ulId, onChange) {
+  const ul = document.getElementById(ulId);
+  ul.innerHTML = '';
+
+  for (let i = 1; i <= paginacao.totalPages; i++) {
+    const li = document.createElement('li');
+    li.className = `page-item ${i === paginacao.page ? 'active' : ''}`;
+    li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+    li.onclick = e => {
+      e.preventDefault();
+      paginacao.page = i;
+      onChange();
+    };
+    ul.appendChild(li);
+  }
+}
+
+let pagFornecedores;
+
+async function carregarFornecedores() {
+  const data = await request('/fornecedores');
+  pagFornecedores = criarPaginacao(data, 5);
+  renderFornecedores();
+}
+
+function renderFornecedores() {
+  const tbody = document.querySelector('#tblFornecedores tbody');
+  tbody.innerHTML = '';
+
+  getPagina(pagFornecedores).forEach(f => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
         <td style="display: none;">${f.id}</td>
         <td>${f.nome}</td>
         <td>${f.telefone || "-"}</td>
-        <td style="width: 15%;">
+        <td style="width: 15%; text-align: right;">
           <button class="btn-edit"
             onclick="editarFornecedor(${f.id}, '${f.nome.replace(/'/g, "\\'")}', '${(f.telefone || "").replace(/'/g, "\\'")}')">
             <i class="fa fa-edit" style="margin-right: 5px;"></i>Editar
@@ -27,11 +64,10 @@ async function carregarFornecedores() {
           </button>
         </td>
       `;
-      tbody.appendChild(tr);
-    });
-  } catch (err) {
-    console.error("Erro ao carregar fornecedores", err);
-  }
+    tbody.appendChild(tr);
+  });
+
+  renderPaginacao(pagFornecedores, 'pagFornecedores', renderFornecedores);
 }
 
 function editarFornecedor(id, nome, telefone) {

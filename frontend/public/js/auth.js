@@ -20,7 +20,7 @@ loginForm.addEventListener('submit', async (e) => {
     if (!token) throw new Error('Resposta sem token');
 
     localStorage.setItem('authToken', token);
-    window.location.href = 'categorias.html';
+    window.location.href = 'index.html';
   } catch (err) {
     console.error(err);
     errorDiv.textContent = 'Usuário ou senha inválidos';

@@ -448,3 +448,54 @@ body.login .card {
   text-align: center;
   vertical-align: middle;
 }
+
+.pagination {
+  gap: 6px;
+}
+
+.page-item {
+  list-style: none;
+}
+
+.page-link {
+  min-width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 12px;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  color: #4a40d9;
+  background: rgba(74, 64, 217, 0.12);
+
+  border: 1px solid rgba(74, 64, 217, 0.35);
+  border-radius: 999px;
+
+  transition: all 0.2s ease;
+}
+
+.page-link:hover {
+  background: #4a40d9;
+  color: #fff;
+  transform: scale(0.95);
+}
+
+.page-item.active .page-link {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+
+  border-color: transparent;
+  box-shadow: 0 6px 14px rgba(79, 70, 229, 0.45);
+
+  transform: scale(0.92);
+}
+
+.page-item.disabled .page-link {
+  opacity: 0.4;
+  pointer-events: none;
+}

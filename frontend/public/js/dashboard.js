@@ -107,9 +107,9 @@ function montarTabelaMovimentacoes(lista) {
                     ${m.tipo}
                 </span>
             </td>
+            <td style="width: 10%;">${formatarData(m.data)}</td>
             <td>${m.produto}</td>
-            <td>${m.quantidade}</td>
-            <td>${formatarData(m.data)}</td>
+            <td class="col-center">${m.quantidade}</td>
         </tr>
     `,
     )

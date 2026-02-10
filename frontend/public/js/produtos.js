@@ -17,18 +17,51 @@ async function carregarCombos() {
   ).join('');
 }
 
+function criarPaginacao(data, pageSize = 10) {
+  return {
+    data,
+    pageSize,
+    page: 1,
+    totalPages: Math.ceil(data.length / pageSize)
+  };
+}
+
+function getPagina(paginacao) {
+  const start = (paginacao.page - 1) * paginacao.pageSize;
+  return paginacao.data.slice(start, start + paginacao.pageSize);
+}
+
+function renderPaginacao(paginacao, ulId, onChange) {
+  const ul = document.getElementById(ulId);
+  ul.innerHTML = '';
+
+  for (let i = 1; i <= paginacao.totalPages; i++) {
+    const li = document.createElement('li');
+    li.className = `page-item ${i === paginacao.page ? 'active' : ''}`;
+    li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+    li.onclick = e => {
+      e.preventDefault();
+      paginacao.page = i;
+      onChange();
+    };
+    ul.appendChild(li);
+  }
+}
+
+let pagProdutos;
+
 async function carregarProdutos() {
   const data = await request('/produtos');
+  pagProdutos = criarPaginacao(data, 3);
+  renderProdutos();
+}
+
+function renderProdutos() {
   const tbody = document.querySelector('#tblProdutos tbody');
   tbody.innerHTML = '';
 
-  data.forEach(p => {
+  getPagina(pagProdutos).forEach(p => {
     const tr = document.createElement('tr');
-
-    if (p.quantidade <= p.minima) {
-      tr.classList.add('table-danger');
-    }
-
     tr.innerHTML = `
       <td>${p.nome}</td>
       <td>${p.categoriaNome}</td>
@@ -36,7 +69,7 @@ async function carregarProdutos() {
       <td class="col-center">${p.quantidade}</td>
       <td class="col-center">${p.minima}</td>
       <td class="col-center">${formatarMoeda(p.valor)}</td>
-      <td style="width: 15%;">
+      <td style="width: 15%; text-align: right;">
         <button class="btn-edit"
           onclick="editarProduto(${p.id})"><i class="fa fa-edit" style="margin-right: 5px;"></i>Editar</button>
         <button class="btn-delete"
@@ -45,6 +78,8 @@ async function carregarProdutos() {
     `;
     tbody.appendChild(tr);
   });
+
+  renderPaginacao(pagProdutos, 'pagProdutos', renderProdutos);
 }
 
 async function editarProduto(id) {

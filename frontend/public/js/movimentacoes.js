@@ -21,15 +21,52 @@ async function carregarProdutos() {
   }
 }
 
-async function carregarMovimentacoes() {
-  try {
-    const data = await request('/movimentacoes', { method: 'GET' });
-    const tbody = document.getElementById('tblMovimentacoes');
-    tbody.innerHTML = '';
+function criarPaginacao(data, pageSize = 10) {
+  return {
+    data,
+    pageSize,
+    page: 1,
+    totalPages: Math.ceil(data.length / pageSize)
+  };
+}
 
-    data.forEach(m => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
+function getPagina(paginacao) {
+  const start = (paginacao.page - 1) * paginacao.pageSize;
+  return paginacao.data.slice(start, start + paginacao.pageSize);
+}
+
+function renderPaginacao(paginacao, ulId, onChange) {
+  const ul = document.getElementById(ulId);
+  ul.innerHTML = '';
+
+  for (let i = 1; i <= paginacao.totalPages; i++) {
+    const li = document.createElement('li');
+    li.className = `page-item ${i === paginacao.page ? 'active' : ''}`;
+    li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+    li.onclick = e => {
+      e.preventDefault();
+      paginacao.page = i;
+      onChange();
+    };
+    ul.appendChild(li);
+  }
+}
+
+let pagMovimentacoes;
+
+async function carregarMovimentacoes() {
+  const data = await request('/movimentacoes');
+  pagMovimentacoes = criarPaginacao(data, 5);
+  renderMovimentacoes();
+}
+
+function renderMovimentacoes() {
+  const tbody = document.querySelector('#tblMovimentacoes tbody');
+  tbody.innerHTML = '';
+
+  getPagina(pagMovimentacoes).forEach(m => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
         <td style="width: 15%;">
           <span class="badge ${m.tipo === 'ENTRADA' ? 'bg-success' : 'bg-danger'}">
             ${m.tipo}
@@ -39,11 +76,10 @@ async function carregarMovimentacoes() {
         <td>${m.produtoNome}</td>
         <td class="col-center">${m.quantidade}</td>
       `;
-      tbody.appendChild(tr);
-    });
-  } catch (err) {
-    console.error('Erro ao carregar movimentações', err);
-  }
+    tbody.appendChild(tr);
+  });
+
+  renderPaginacao(pagMovimentacoes, 'pagMovimentacoes', renderMovimentacoes);
 }
 
 async function salvarMovimentacao(e) {

@@ -36,8 +36,8 @@
       >
 
       <div class="sidebar-footer">
-        <button onclick="logout()" class="btn btn-sm btn-light w-100">
-          Sair
+        <button onclick="logout()" class="btn btn-sm btn-light w-100" style="background: #4338ca;color: white;">
+          <i class="fa-solid fa-right-from-bracket" style="margin-right: 5px;"></i>Sair
         </button>
       </div>
     </div>
@@ -61,7 +61,7 @@
           </button>
         </div>
 
-        <table class="table table-striped">
+        <table class="table table-striped" id="tblMovimentacoes">
           <thead>
             <tr>
               <th></th>
@@ -72,6 +72,12 @@
           </thead>
           <tbody id="tblMovimentacoes"></tbody>
         </table>
+
+        <div class="d-flex justify-content-end mt-3">
+        <nav>
+          <ul class="pagination pagination-sm" id="pagMovimentacoes"></ul>
+        </nav>
+      </div>
       </div>
 
       <div class="modal fade" id="modalMovimentacao" tabindex="-1">
