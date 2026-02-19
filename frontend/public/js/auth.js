@@ -1,4 +1,4 @@
-const apiBase = 'http://localhost:8080'; 
+const apiBase = 'http://localhost:8080';
 const loginForm = document.getElementById('login-form');
 const errorDiv = document.getElementById('login-error');
 

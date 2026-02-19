@@ -123,8 +123,8 @@ async function salvarMovimentacao(e) {
 }
 
 function formatarData(dataISO) {
-    if (!dataISO) return "";
+  if (!dataISO) return "";
 
-    const data = new Date(dataISO);
-    return data.toLocaleDateString("pt-BR");
+  const data = new Date(dataISO);
+  return data.toLocaleDateString("pt-BR");
 }
