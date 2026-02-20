@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+  <div class="sidebar">
+    <div class="logo">InvenTech</div>
+    <a href="dashboard.html" class="active"><i class="fa fa-chart-line" style="margin-right: 10px;"></i> Dashboard</a>
+    <a href="categorias.html"><i class="fa fa-box" style="margin-right: 10px;"></i>Categorias</a>
+    <a href="fornecedores.html"><i class="fa fa-truck" style="margin-right: 10px;"></i>Fornecedores</a>
+    <a href="produtos.html"><i class="fa fa-list" style="margin-right: 10px;"></i>Produtos</a>
+    <a href="movimentacoes.html"><i class="fa fa-exchange" style="margin-right: 10px;"></i>Movimentações</a>
+
+    <div class="sidebar-footer">
+      <button onclick="logout()" class="btn btn-sm btn-light w-100" style="background: #4338ca;color: white;">
+        <i class="fa-solid fa-right-from-bracket" style="margin-right: 5px;"></i>Sair
+      </button>
+    </div>
+  </div>
+
+  <div id="loading" class="loading-overlay" style="display:none;">
+    <div class="spinner"></div>
+    <p>Carregando...</p>
+  </div>
+
+  <div class="main-content">
+    <div class="container">
+      <h2>Dashboard</h2>
+
+      <div class="dashboard-cards" id="cards"></div>
+
+      <div class="dashboard-graficos">
+        <div class="grafico-box">
+          <canvas id="graficoEntradasSaidas"></canvas>
+        </div>
+        <div class="grafico-box">
+          <canvas id="graficoBaixoEstoque"></canvas>
+        </div>
+      </div>
+
+      <h3>Últimas Movimentações</h3>
+      <table class="table table-striped" id="tabelaMovimentacoes">
+        <thead>
+          <tr>
+            <th style="width: 10%;"></th>
+            <th style="width: 10%;">Data</th>
+            <th>Produto</th>
+            <th class="col-center">Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
