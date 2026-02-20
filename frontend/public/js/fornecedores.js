@@ -39,7 +39,7 @@ let pagFornecedores;
 
 async function carregarFornecedores() {
   const data = await request('/fornecedores');
-  pagFornecedores = criarPaginacao(data, 5);
+  pagFornecedores = criarPaginacao(data, 10);
   renderFornecedores();
 }
 
@@ -85,6 +85,15 @@ async function salvarFornecedor(e) {
   const id = document.getElementById("fornecedorId").value;
   const nome = document.getElementById("nomeFornecedor").value.trim();
   const telefone = document.getElementById("telefoneFornecedor").value.trim();
+
+  if (!nome || !telefone) {
+        Swal.fire({
+            icon: "error",
+            title: "Erro",
+            text: "Todos os campos são obrigatórios"
+        });
+        return;
+    }
 
   try {
     if (id) {

@@ -1,4 +1,4 @@
-const apiBase = 'http://localhost:8080';
+const apiBase = 'https://controle-estoque-e4nc.onrender.com';
 
 function getToken() {
   return localStorage.getItem('authToken');
@@ -18,4 +18,9 @@ async function request(path, options = {}) {
   const contentType = res.headers.get('content-type') || '';
   if (contentType.includes('application/json')) return res.json();
   return res.text();
+}
+
+function logout() {
+    localStorage.clear();
+    window.location.href = "login.html";
 }

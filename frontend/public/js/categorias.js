@@ -39,7 +39,7 @@ let pagCategorias;
 
 async function carregarCategorias() {
   const data = await request('/categorias');
-  pagCategorias = criarPaginacao(data, 3);
+  pagCategorias = criarPaginacao(data, 10);
   renderCategorias();
 }
 
@@ -80,6 +80,15 @@ async function salvarCategoria(e) {
   e.preventDefault();
   const id = document.getElementById("categoriaId").value;
   const nome = document.getElementById("nomeCategoria").value.trim();
+
+  if (!nome) {
+        Swal.fire({
+            icon: "error",
+            title: "Erro",
+            text: "Todos os campos são obrigatórios"
+        });
+        return;
+    }
 
   try {
     if (id) {

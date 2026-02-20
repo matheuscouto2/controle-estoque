@@ -52,7 +52,7 @@ let pagProdutos;
 
 async function carregarProdutos() {
   const data = await request('/produtos');
-  pagProdutos = criarPaginacao(data, 3);
+  pagProdutos = criarPaginacao(data, 10);
   renderProdutos();
 }
 
@@ -100,6 +100,16 @@ async function salvarProduto(e) {
   e.preventDefault();
 
   const id = produtoId.value;
+
+  if (!nomeProduto.value || !categoriaProduto.value || !fornecedorProduto.value || !quantidadeProduto.value || !minimaProduto.value || !valorProduto.value) {
+    Swal.fire({
+      icon: "error",
+      title: "Erro",
+      text: "Todos os campos são obrigatórios"
+    });
+    return;
+  }
+
   const body = JSON.stringify({
     id,
     nome: nomeProduto.value,

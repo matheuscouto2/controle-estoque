@@ -56,7 +56,7 @@ let pagMovimentacoes;
 
 async function carregarMovimentacoes() {
   const data = await request('/movimentacoes');
-  pagMovimentacoes = criarPaginacao(data, 5);
+  pagMovimentacoes = criarPaginacao(data, 10);
   renderMovimentacoes();
 }
 
@@ -89,6 +89,15 @@ async function salvarMovimentacao(e) {
   const tipo = document.getElementById('tipoMov').value;
   const quantidade = Number(document.getElementById('qtdMov').value);
   const data = document.getElementById('dataMov').value;
+
+  if (!tipo || !quantidade || !data) {
+        Swal.fire({
+            icon: "error",
+            title: "Erro",
+            text: "Todos os campos são obrigatórios"
+        });
+        return;
+    }
 
   const option = document.getElementById('produtoMov').selectedOptions[0];
   const estoqueAtual = Number(option.dataset.qtd);
