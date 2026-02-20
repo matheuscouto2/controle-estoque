@@ -1,4 +1,4 @@
-const apiBase = 'https://controle-estoque-e4nc.onrender.com';
+
 const loginForm = document.getElementById('login-form');
 const errorDiv = document.getElementById('login-error');
 
