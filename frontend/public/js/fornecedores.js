@@ -38,9 +38,19 @@ function renderPaginacao(paginacao, ulId, onChange) {
 let pagFornecedores;
 
 async function carregarFornecedores() {
-  const data = await request('/fornecedores');
-  pagFornecedores = criarPaginacao(data, 10);
-  renderFornecedores();
+  try {
+    showLoading();
+
+    const data = await request('/fornecedores');
+    pagFornecedores = criarPaginacao(data, 10);
+    renderFornecedores();
+
+  } catch (error) {
+    console.error(error);
+    alert("Erro ao carregar fornecedores.");
+  } finally {
+    hideLoading();
+  }
 }
 
 function renderFornecedores() {

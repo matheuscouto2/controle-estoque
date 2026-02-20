@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function loadDashboard() {
+  showLoading();
   fetch(apiBase + "/dashboard", {
     headers: getHeaders(),
   })
@@ -16,7 +17,8 @@ function loadDashboard() {
       const d = JSON.parse(t);
       renderDashboard(d);
     })
-    .catch((err) => console.error("Erro ao carregar dashboard", err));
+    .catch((err) => console.error("Erro ao carregar dashboard", err))
+    .finally(() => { hideLoading(); });
 }
 
 function renderDashboard(d) {

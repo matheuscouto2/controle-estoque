@@ -51,9 +51,19 @@ function renderPaginacao(paginacao, ulId, onChange) {
 let pagProdutos;
 
 async function carregarProdutos() {
-  const data = await request('/produtos');
-  pagProdutos = criarPaginacao(data, 10);
-  renderProdutos();
+  try {
+    showLoading();
+
+    const data = await request('/produtos');
+    pagProdutos = criarPaginacao(data, 10);
+    renderProdutos();
+
+  } catch (error) {
+    console.error(error);
+    alert("Erro ao carregar produtos.");
+  } finally {
+    hideLoading();
+  }
 }
 
 function renderProdutos() {

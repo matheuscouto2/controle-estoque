@@ -55,9 +55,19 @@ function renderPaginacao(paginacao, ulId, onChange) {
 let pagMovimentacoes;
 
 async function carregarMovimentacoes() {
-  const data = await request('/movimentacoes');
-  pagMovimentacoes = criarPaginacao(data, 10);
-  renderMovimentacoes();
+  try {
+    showLoading();
+
+    const data = await request('/movimentacoes');
+    pagMovimentacoes = criarPaginacao(data, 10);
+    renderMovimentacoes();
+
+  } catch (error) {
+    console.error(error);
+    alert("Erro ao carregar movimentações.");
+  } finally {
+    hideLoading();
+  }
 }
 
 function renderMovimentacoes() {

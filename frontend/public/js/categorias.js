@@ -38,9 +38,19 @@ function renderPaginacao(paginacao, ulId, onChange) {
 let pagCategorias;
 
 async function carregarCategorias() {
-  const data = await request('/categorias');
-  pagCategorias = criarPaginacao(data, 10);
-  renderCategorias();
+  try {
+    showLoading();
+
+    const data = await request('/categorias');
+    pagCategorias = criarPaginacao(data, 10);
+    renderCategorias();
+
+  } catch (error) {
+    console.error(error);
+    alert("Erro ao carregar categorias.");
+  } finally {
+    hideLoading();
+  }
 }
 
 function renderCategorias() {

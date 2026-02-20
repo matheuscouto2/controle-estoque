@@ -4,8 +4,11 @@ const errorDiv = document.getElementById('login-error');
 
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+
   const usuario = document.getElementById('usuario').value.trim();
   const senha = document.getElementById('senha').value.trim();
+
+  showLoading();
 
   try {
     const res = await fetch(`${apiBase}/auth`, {
@@ -15,16 +18,22 @@ loginForm.addEventListener('submit', async (e) => {
     });
 
     if (!res.ok) throw new Error('Login inválido');
+
     const data = await res.json();
     const token = data.token || data.accessToken || null;
+
     if (!token) throw new Error('Resposta sem token');
 
     localStorage.setItem('authToken', token);
     window.location.href = 'index.html';
+
   } catch (err) {
     console.error(err);
     errorDiv.textContent = 'Usuário ou senha inválidos';
     errorDiv.classList.remove('d-none');
+
+  } finally {
+    hideLoading();
   }
 });
 
