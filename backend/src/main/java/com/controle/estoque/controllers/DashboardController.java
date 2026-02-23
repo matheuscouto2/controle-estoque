@@ -31,7 +31,6 @@ public class DashboardController {
         LocalDate inicioMes = hoje.withDayOfMonth(1);
         LocalDate inicio7Dias = hoje.minusDays(7);
 
-        // Resumo geral
         long totalProdutos = produtoRepo.count();
         long baixoEstoque = produtoRepo.countProdutosAbaixoDoMinimo();
 
@@ -43,23 +42,20 @@ public class DashboardController {
         if (entradasMes == null) entradasMes = 0L;
         if (saidasMes == null) saidasMes = 0L;
 
-        // Últimas movimentações
         List<MovimentacaoDTO> ultimas = movRepo.findTop5ByOrderByDataDesc()
                 .stream()
                 .map(MovimentacaoDTO::new)
                 .toList();
 
-        // Entradas/Saídas últimos 7 dias
         List<GraficoDiaDTO> grafico = movRepo.entradasSaidasUltimos7Dias(inicio7Dias)
                 .stream()
                 .map(o -> new GraficoDiaDTO(
-                        o[0].toString(),  // data (LocalDate)
-                        o[1].toString(),  // tipo
-                        ((Number) o[2]).longValue()  // soma quantidade
+                        o[0].toString(),
+                        o[1].toString(),
+                        ((Number) o[2]).longValue()
                 ))
                 .toList();
 
-        // Produtos críticos (estoque baixo)
         List<ProdutoBaixoEstoqueDTO> produtosCriticos = produtoRepo.findProdutosAbaixoDoMinimo()
                 .stream()
                 .map(ProdutoBaixoEstoqueDTO::new)
